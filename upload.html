@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>文件上传</title>
+</head>
+
+<body>
+
+    <input type="file" id="file" name="userfile">
+<br>
+<br>
+    <input type="submit" id="btn">
+
+
+<script>
+    var $btn = document.getElementById('btn')
+    var $file = document.getElementById('file')
+
+    $btn.onclick = function() {
+        var file = $file.files
+        if (file.length === 0) {
+            alert('未选择文件')
+            return
+        }
+        file = file[0]
+        var xhr = new XMLHttpRequest(),
+            formData = new FormData()
+        formData.append('userfile', file)
+        xhr.onreadystatechange = function(a, b, c) {
+            if (this.status === 200 && this.readyState === 4) {
+                if (this.responseText === 'File uploaded success') {
+                    alert('上传成功')
+                    $file.value = ''
+                }
+            }
+        }
+        xhr.open('post', './upload2.php')
+        xhr.send(formData)
+    }
+
+
+</script>
+
+</body>
+</html>
