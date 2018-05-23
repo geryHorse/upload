@@ -33,6 +33,8 @@ echo '</ul>';
 // $r = copy('./files/bbc/a/a.jpg', './files/bbc/bs/a.jpg');
 // echo $r;
 
+
+
 // $r = rename('./files/bbc/a/a.jpg', './files/bbc/a/a_rename.jpg');
 // echo $r;
 
